@@ -116,3 +116,17 @@ select
   musica_entrada::text as monto_tramo
 from raw_enpcc_2024
 ;
+
+create or replace view vw_kpis_comuna as
+select
+  anio,
+  region,
+  idcomuna,
+  disciplina,
+  avg(asistio_12m::numeric) as share_asistio_12m,
+  avg(alguna_vez::numeric) as share_alguna_vez,
+  avg(case when entrada_tipo = 'pagada' then 1
+           when entrada_tipo = 'gratuita' then 0
+           else null end::numeric) as share_pago
+from vw_participacion_long
+group by 1,2,3,4;
