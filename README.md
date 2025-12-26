@@ -1,2 +1,35 @@
-# proyecto-datalized
-Postulación Data Analyst
+# proyecto-datalized — Panel de participación cultural (ENPC 2017 vs ENPCCL 2024)
+
+## 1. Pregunta del panel
+¿Qué comunas presentan mayores brechas de participación en **cine** y **música en vivo** (últimos 12 meses), y cómo se relaciona con **pago vs gratuidad**, para orientar programación y mediación de una institución cultural?
+
+## 2. Contexto (cliente ficticio)
+Una institución cultural municipal necesita priorizar comunas y segmentos para aumentar participación presencial y diseñar estrategias de acceso (precio/gratuidad) antes de la implementación del Pase Cultural.
+
+## 3. Fuentes de datos (públicas)
+- ENPC 2017 (base + diccionario + metodología)
+- ENPCCL 2024 (base + diccionario + metodología)
+- Encuesta de Espectáculos Públicos: Tabulados regionales INE / ECIA (para contraste regional oferta/mercado)
+
+> Nota: este repo no incluye microdatos por tamaño/licencia; incluye scripts y pasos para reproducir.
+
+## 4. Proceso (alto nivel)
+1) Descarga de datos
+2) Limpieza y estandarización (SQL básico)
+3) Construcción de métricas (KPIs)
+4) Dashboard publicado (Power BI)
+
+## 5. Decisiones de diseño del dashboard
+- 4 páginas: Resumen, Brechas comunales, Pago/Gratuidad y Precios, Contraste regional (opcional)
+- Se evita inferir causalidad: análisis descriptivo
+
+## 6. Limitaciones
+- no uso de ponderadores (factores de expansión)
+- Comparabilidad 2017–2024: puede haber cambios de formulación o factores exógenos
+- Tabulados INE/ECIA son regionales; no se mezclan con nivel comunal; mientras que ENPCC sí es comunal
+
+## 7. Cómo reproducir
+- Ver `/docs/` y `/sql/` (se agregará en próximos commits)
+
+## 8. Link al dashboard público
+- (pendiente)
