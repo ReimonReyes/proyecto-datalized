@@ -1,7 +1,7 @@
-# proyecto-datalized — Panel de participación cultural (ENPC 2017 vs ENPCCL 2024)
+# Postulación-Datalized — Panel de participación cultural (ENPC 2017 vs ENPCCL 2024) v/s oferta
 
 ## 1. Pregunta del panel
-¿Qué comunas presentan mayores brechas de participación en **cine** y **música en vivo** (últimos 12 meses), y cómo se relaciona con **pago vs gratuidad**, para orientar programación y mediación de una institución cultural?
+¿Qué comunas presentan mayores brechas de participación en **cine** y **música en vivo** (últimos 12 meses), y cómo se relaciona con **pago vs gratuidad**, para orientar programación y mediación de una institución cultural? ¿existen regiones con mayor brecha de oferta y demanda?
 
 ## 2. Contexto (cliente ficticio)
 Una institución cultural municipal necesita priorizar comunas y segmentos para aumentar participación presencial y diseñar estrategias de acceso (precio/gratuidad) antes de la implementación del Pase Cultural.
