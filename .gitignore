@@ -1,0 +1,6 @@
+# Datos
+data/*
+!data/.gitkeep
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
