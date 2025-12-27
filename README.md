@@ -13,9 +13,24 @@ Una institución cultural municipal necesita priorizar comunas y segmentos para 
 
 > Nota: este repo no incluye microdatos por tamaño/licencia; incluye scripts y pasos para reproducir.
 
-## 4. Proceso (alto nivel)
-1) Descarga de datos
-2) Limpieza y estandarización (SQL básico)
+## 4. Proceso 
+## Proceso de limpieza y transformación (reproducible)
+
+### 1) Carga local a PostgreSQL (staging)
+Los microdatos se procesan localmente (PostgreSQL + pgAdmin) para asegurar reproducibilidad y separar:
+- **staging (raw texto)**: ingesta sin fallos por tipos de datos
+- **tabla limpia (tipada)**: conversión a tipos numéricos para análisis
+
+**Motivo**: durante la importación se detectaron campos con valores vacíos/espacios en variables numéricas (p. ej. `d7_3`), lo que provoca errores al cargar directo a columnas `integer`. Se resuelve con un staging `TEXT` y posterior limpieza (`TRIM + NULLIF`) antes del casteo.
+
+### 2) Limpieza (casting seguro)
+Se aplica:
+- `TRIM()` para eliminar espacios
+- `NULLIF(x,'')` para transformar vacío en `NULL`
+- cast a `INT` solo después de normalizar
+
+Resultado: tabla `raw_enpcc_2017` tipada y estable para crear vistas analíticas.
+
 3) Construcción de métricas (KPIs)
 4) Dashboard publicado (Power BI)
 
