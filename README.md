@@ -30,8 +30,18 @@ Se aplica:
 - cast a `INT` solo después de normalizar
 
 Resultado: tabla `raw_enpcc_2017` tipada y estable para crear vistas analíticas.
+### Vistas analíticas
+Se crean dos vistas:
+
+- `vw_participacion_long`: estandariza 2017/2024 a un formato común (cine y música en vivo) con variables binarias (0/1) y campos de pago/tramo cuando existen.
+- `vw_kpis_comuna`: agrega la información por comuna-año-disciplina y calcula KPIs (porcentajes) listos para el dashboard.
+
+> Nota: las vistas no exportan archivos; se consultan directamente desde Power BI conectando a PostgreSQL.
+
 
 3) Construcción de métricas (KPIs)
+
+
 4) Dashboard publicado (Power BI)
 ## SQL / Estructura del repositorio
 
