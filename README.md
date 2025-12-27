@@ -33,6 +33,11 @@ Resultado: tabla `raw_enpcc_2017` tipada y estable para crear vistas analíticas
 
 3) Construcción de métricas (KPIs)
 4) Dashboard publicado (Power BI)
+## SQL / Estructura del repositorio
+
+- `/sql/01_staging_2017.sql`: crea tabla `raw_enpcc_2017_txt` (todo TEXT).
+- `/sql/02_clean_2017.sql`: crea `raw_enpcc_2017` desde staging con limpieza y casteo.
+- `/sql/03_views.sql`: crea vistas analíticas para el dashboard (tabla larga + KPIs).
 
 ## 5. Decisiones de diseño del dashboard
 - 4 páginas: Resumen, Brechas comunales, Pago/Gratuidad y Precios, Contraste regional (opcional)
@@ -44,7 +49,14 @@ Resultado: tabla `raw_enpcc_2017` tipada y estable para crear vistas analíticas
 - Tabulados INE/ECIA son regionales; no se mezclan con nivel comunal; mientras que ENPCC sí es comunal
 
 ## 7. Cómo reproducir
-- Ver `/docs/` y `/sql/` (se agregará en próximos commits)
+## Cómo reproducir (local)
+
+1. Crear base `datalized_enpcc` en PostgreSQL.
+2. Importar CSV 2017 a `raw_enpcc_2017_txt` usando pgAdmin (delimiter `;`, header ON, encoding UTF-8).
+3. Ejecutar `/sql/02_clean_2017.sql` para generar `raw_enpcc_2017`.
+4. Repetir el mismo patrón para 2024.
+5. Ejecutar `/sql/03_views.sql` y conectar Power BI a las vistas (`vw_kpis_comuna`).
+
 
 ## 8. Link al dashboard público
 - (pendiente)
