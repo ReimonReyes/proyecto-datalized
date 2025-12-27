@@ -1,4 +1,4 @@
-# Postulación-Datalized — Panel de participación cultural (ENPC 2017 vs ENPCCL 2024) v/s oferta
+# Postulación-Datalized — Panel de participación cultural demanda (ENPC 2017 vs ENPCCL 2024) v/s oferta (INE)
 
 ## 1. Pregunta del panel
 ¿Qué comunas presentan mayores brechas de participación en **cine** y **música en vivo** (últimos 12 meses), y cómo se relaciona con **pago vs gratuidad**, para orientar programación y mediación de una institución cultural? ¿existen regiones con mayor brecha de oferta y demanda?
@@ -11,8 +11,6 @@ Una institución cultural municipal necesita priorizar comunas y segmentos para 
 - ENPCCL 2024 (base + diccionario + metodología)
 - Encuesta de Espectáculos Públicos: Tabulados regionales INE / ECIA (para contraste regional oferta/mercado)
 
-> Nota: este repo no incluye microdatos por tamaño/licencia; incluye scripts y pasos para reproducir.
-
 ## 4. Proceso 
 ## Proceso de limpieza y transformación (reproducible)
 
@@ -20,7 +18,7 @@ Una institución cultural municipal necesita priorizar comunas y segmentos para 
 Los microdatos se procesan localmente (PostgreSQL + pgAdmin) para asegurar reproducibilidad y separar:
 - **staging (raw texto)**: ingesta sin fallos por tipos de datos
 - **tabla limpia (tipada)**: conversión a tipos numéricos para análisis
-
+se importan CSV a tablas `*_txt` con tipos `TEXT` para evitar errores por formato.
 **Motivo**: durante la importación se detectaron campos con valores vacíos/espacios en variables numéricas (p. ej. `d7_3`), lo que provoca errores al cargar directo a columnas `integer`. Se resuelve con un staging `TEXT` y posterior limpieza (`TRIM + NULLIF`) antes del casteo.
 
 ### 2) Limpieza (casting seguro)
@@ -28,26 +26,24 @@ Se aplica:
 - `TRIM()` para eliminar espacios
 - `NULLIF(x,'')` para transformar vacío en `NULL`
 - cast a `INT` solo después de normalizar
-
-Resultado: tabla `raw_enpcc_2017` tipada y estable para crear vistas analíticas.
-### Vistas analíticas
-Se crean dos vistas:
-
-- `vw_participacion_long`: estandariza 2017/2024 a un formato común (cine y música en vivo) con variables binarias (0/1) y campos de pago/tramo cuando existen.
-- `vw_kpis_comuna`: agrega la información por comuna-año-disciplina y calcula KPIs (porcentajes) listos para el dashboard.
-
-> Nota: las vistas no exportan archivos; se consultan directamente desde Power BI conectando a PostgreSQL.
-
+se normalizan variables clave (por ejemplo, respuestas `Sí/No` → códigos 1/2) y se tipan columnas necesarias.
+Resultado: tabla `raw_enpcc_2017` tipada y estable para crear vistas analíticas. Lo mismo para 2024.
+## SQL / Estructura del repositorio
+1. Ejecuta scripts en orden:
+   - `sql/01_staging_2017.sql` → importar CSV a `raw_enpcc_2017_txt`
+   - `sql/02_clean_2017.sql`
+   - `sql/01_staging_2024_full.sql` → importar CSV a `raw_enpcc_2024_full_txt`
+   - `sql/02_clean_2024.sql`
+   - `sql/03_views.sql`
+3. Conecta Power BI a PostgreSQL y usa:
+   - `vw_kpis_region`
+   - `vw_kpis_comuna_2017`
 
 3) Construcción de métricas (KPIs)
 
 
 4) Dashboard publicado (Power BI)
-## SQL / Estructura del repositorio
 
-- `/sql/01_staging_2017.sql`: crea tabla `raw_enpcc_2017_txt` (todo TEXT).
-- `/sql/02_clean_2017.sql`: crea `raw_enpcc_2017` desde staging con limpieza y casteo.
-- `/sql/03_views.sql`: crea vistas analíticas para el dashboard (tabla larga + KPIs).
 
 ## 5. Decisiones de diseño del dashboard
 - 4 páginas: Resumen, Brechas comunales, Pago/Gratuidad y Precios, Contraste regional (opcional)
