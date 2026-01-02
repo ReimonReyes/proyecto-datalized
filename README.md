@@ -51,7 +51,7 @@ Los scripts SQL dejan listas vistas consumibles por Power BI:
 
 ## 6) Modelado y medidas en Power BI
 # 6.1 Modelo lógico (mínimo, orientado al dashboard)
-![Modelo de datos]
+![[Modelo de datos](https://github.com/ReimonReyes/proyecto-datalized/blob/main/powerbi/05_Modelo%20de%20datos.png)]
 
 El reporte se construyó sobre un modelo liviano, separando dimensiones (territorio y tiempo) de hechos (KPIs ya agregados desde SQL).
 
