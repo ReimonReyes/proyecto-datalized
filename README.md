@@ -10,10 +10,10 @@ Producto (Dashboard)
 - **Repositorio GitHub (este):** [[link](https://github.com/ReimonReyes/proyecto-datalized)]
 
 **Páginas del reporte**
-1. Portada: propósito y audiencia del análisis.
-2. Resumen Regional (2017–2024): embudo de participación + ranking regional.
-3. Zoom Comunal (2017): mapa y ranking comunal (solo 2017 por limitación de datos 2024).
-4. Recomendaciones: trade-offs y estimación de mercado (CLP) con supuestos explícitos
+1. [Portada](https://github.com/ReimonReyes/proyecto-datalized/blob/main/powerbi/01_Portada.png): propósito y audiencia del análisis.
+2. [Resumen Regional (2017–2024)](https://github.com/ReimonReyes/proyecto-datalized/blob/main/powerbi/02_Resumen%20Regional.png): embudo de participación + ranking regional.
+3. [Zoom Comunal (2017)](https://github.com/ReimonReyes/proyecto-datalized/blob/main/powerbi/03_Zoom%20Comunal.png): mapa y ranking comunal (solo 2017 por limitación de datos 2024).
+4. [Recomendaciones](https://github.com/ReimonReyes/proyecto-datalized/blob/main/powerbi/04_Recomendaciones.png): trade-offs y estimación de mercado (CLP) con supuestos explícitos
 
 ## Contexto (cliente ficticio)
 Una institución cultural municipal necesita priorizar comunas y segmentos para aumentar participación presencial y diseñar estrategias de acceso (precio/gratuidad) antes de la implementación del Pase Cultural.
@@ -51,6 +51,7 @@ Los scripts SQL dejan listas vistas consumibles por Power BI:
 
 ## 6) Modelado y medidas en Power BI
 # 6.1 Modelo lógico (mínimo, orientado al dashboard)
+![Modelo de datos]
 
 El reporte se construyó sobre un modelo liviano, separando dimensiones (territorio y tiempo) de hechos (KPIs ya agregados desde SQL).
 
@@ -100,12 +101,15 @@ El dashboard se diseñó para entregar un diagnóstico territorial accionable, s
 
 a) Portada
 Define misión y público objetivo del dashboard.
+
 b) Resumen Regional (2017–2024)
 Presenta “embudo” de participación (vida → 12m → pago condicional) para Cine y Música en vivo.
 Incluye ranking regional para detectar brechas y priorizar.
+
 c) Zoom Comunal (2017)
 Mapa + ranking comunal para evidenciar desigualdad intrarregional.
 Se enfoca en 2017 porque la versión 2024 utilizada no incluye comuna.
+
 d) Recomendaciones
 Traduce hallazgos a decisiones: trade-off equidad vs escala.
 Incluye un estimador simple de mercado anual en CLP con supuestos.
