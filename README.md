@@ -64,17 +64,17 @@ vw_kpis_comuna: KPIs por anio, disciplina, region, idcomuna (solo 2017 por limit
 
 # Dimensiones (Power BI / CSV):
 
-DimRegion (COD_REG, REGION, labels)
-DimComuna (COD_COM, COMUNA, COD_REG, etc.) para mapa comunal 2017
-DimAño
-DimDisciplina (cine / musica_vivo)
+- DimRegion (COD_REG, REGION, labels)
+- DimComuna (COD_COM, COMUNA, COD_REG, etc.) para mapa comunal 2017
+- DimAño
+- DimDisciplina (cine / musica_vivo)
 
 # Relaciones (mínimas):
-DimRegion[COD_REG] 1 → * vw_kpis_region[region]
-DimRegion[COD_REG] 1 → * DimComuna[COD_REG]
-DimComuna[COD_COM] 1 → * vw_kpis_comuna[idcomuna] (solo 2017)
-DimAño[anio] 1 → * vw_kpis_region[anio] y vw_kpis_comuna[anio]
-DimDisciplina[disciplina] 1 → * vw_kpis_region[disciplina] y vw_kpis_comuna[disciplina]
+- DimRegion[COD_REG] 1 → * vw_kpis_region[region]
+- DimRegion[COD_REG] 1 → * DimComuna[COD_REG]
+- DimComuna[COD_COM] 1 → * vw_kpis_comuna[idcomuna] (solo 2017)
+- DimAño[anio] 1 → * vw_kpis_region[anio] y vw_kpis_comuna[anio]
+- DimDisciplina[disciplina] 1 → * vw_kpis_region[disciplina] y vw_kpis_comuna[disciplina]
 
 Iteración importante: se evitó conectar “hechos con hechos” (muchas a muchas) y se privilegió un esquema simple para que el filtro territorial funcione sin ambigüedad.
 
