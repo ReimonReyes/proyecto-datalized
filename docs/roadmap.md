@@ -10,7 +10,7 @@
 - Extracción con PostgreSQL y dejarlo listo para BI
 - Exportar tabla final para BI
 
-## Sesión 3 — Dashboard y publicación
+## Sesión 3 (terminaron siendo 4) — Dashboard y publicación
 - Construir 4 páginas en Power BI
 - Publicar link público
 - Completar README con instrucciones reproducibles
